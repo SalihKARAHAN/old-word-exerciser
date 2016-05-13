@@ -1,0 +1,81 @@
+/*RESET BROWSERS DEFAULT SETTINGS START */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*RESET BROWSERS DEFAULT SETTINGS END*/
+
+body .container {
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgray;
+}
+body .container header {
+    width: 100%;
+    height: 40px;
+    padding-top: 10px;
+}
+
+/*NAV AREA START */
+
+body .container header .nav {
+    float: left;
+    width: 70%;
+}
+nav {
+    background-color: green;
+}
+nav ol {
+    background-color: lightblue;
+}
+nav ol li {
+    display: inline-block;
+    /*menülerin yan yana gözükmesini sağlıyor*/
+    /*background-color: blue;*/
+}
+nav ol li a {
+    width: auto;
+    height: 30px;
+    display: block;
+    /*a tagının height değerini alabilmesi için*/
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav ol li a:hover {
+    background-color: azure;
+}
+
+/*NAV AREA END*/
+
+
+/*USER HEADER START*/
+
+.user-header {
+    float: left;
+    width: 30%;
+    height: auto;
+    text-align: right;
+}
+.user-header a {
+    text-decoration: none;
+}
+
+/*USER HEADER END*/
+
+body .container footer {
+    width: 100%;
+    max-width: 960px;
+    position: fixed;
+    bottom: 0;
+    background: darkgray;
+}
