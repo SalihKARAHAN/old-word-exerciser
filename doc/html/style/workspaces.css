@@ -1,0 +1,41 @@
+.user-panel {
+    width: 150px;
+    /*background-color: lightgreen;*/
+    float: right;
+}
+.user-panel h3 {}
+.user-panel ol {
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    list-style-type: none;
+    /* numaraları kaldırır */
+    display: none;
+    background-color: white;
+}
+.user-panel ol.opened {
+    /*padding: 5px;*/
+    display: block;
+}
+.user-panel ol li {
+    /*background-color: azure;*/
+    width: 100%;
+    margin-top: 5px;
+    /*background-color: gray;*/
+}
+/*.user-panel ol li:hover {
+    background-color: #ccc;
+}*/
+.user-panel ol li.block-start {
+    border-top: 1px solid black;
+}
+.user-panel ol li a {
+    margin-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    text-decoration: underline;
+}
+.user-panel ol li a:hover {
+    display: block;
+    text-decoration: underline;
+}
