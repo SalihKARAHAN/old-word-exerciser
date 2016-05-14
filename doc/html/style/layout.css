@@ -84,7 +84,7 @@ nav ol li.selected a, nav ol li a:hover {
 body .container footer {
     width: 100%;
     max-width: 960px;
-    position: static;
+    position: fixed;
     bottom: 0;
     /*background: darkgray;*/
 }
