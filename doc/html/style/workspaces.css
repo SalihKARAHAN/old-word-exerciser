@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/*USER PANEL CSS START*/
+
 .user-panel {
     width: 150px;
     /*background-color: lightgreen;*/
@@ -22,9 +36,6 @@
     margin-top: 5px;
     /*background-color: gray;*/
 }
-/*.user-panel ol li:hover {
-    background-color: #ccc;
-}*/
 .user-panel ol li.block-start {
     border-top: 1px solid black;
 }
@@ -39,3 +50,89 @@
     display: block;
     text-decoration: underline;
 }
+
+/*USER PANEL CSS END*/
+
+
+/*SECTION PANEL START*/
+
+section.inner:first-child {
+    border-left: none;
+}
+section.inner:not(:first-child) {
+    padding-left: 10px;
+}
+section.inner {
+    border-left: 2px solid black;
+    width: 48%;
+    margin-top: 20px;
+    float: left;
+    /*background: gray;*/
+}
+
+/*SECTION PANEL END*/
+
+
+/*SEARCH AREA START*/
+
+.inner .search-area input {
+    width: 90%;
+    border-bottom: 2px solid black;
+    height: 30px;
+    margin-bottom: 30px;
+}
+
+/*SEARCH AREA END*/
+
+
+/*RESULT AREA START*/
+
+.result-area {
+    margin-right: 5px;
+    overflow-y: scroll;
+    height: 300px;
+}
+.result-area .result {
+    border: 1px solid black;
+    width: 90%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.result-area .result .result-row {
+    float: left;
+    width: 100%;
+    /*background-color: green;*/
+}
+.result-area .result .result-row .name {
+    float: left;
+}
+.result-area .result .result-row .state-icons {
+    float: right;
+}
+.result-area .result .result-row .word-count {
+    float: left;
+}
+.result-area .result .result-row .date-info {
+    float: right;
+}
+
+/*RESULT AREA END*/
+
+
+/*CREATE WORKSPACE CSS START*/
+
+.create-area {}
+    .create-area h2{
+        margin-bottom: 15px;
+    }
+    .create-area .form-row{
+        margin-bottom: 10px;
+    }
+.create-area input[type="text"] {
+    width: 90%;
+    border-bottom: 2px solid black;
+    height: 30px;
+}
+
+/*CREATE WORKSPACE CSS END*/
