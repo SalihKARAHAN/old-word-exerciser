@@ -64,7 +64,7 @@ nav ol li.selected a, nav ol li a:hover {
 /*USER HEADER START*/
 
 .user-header {
-    float: left;
+    float: right;
     width: 30%;
     height: auto;
     text-align: right;
