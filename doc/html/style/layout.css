@@ -11,6 +11,9 @@ a {
     text-decoration: none;
     color: inherit;
 }
+h1 {
+    font-size: 36px;
+}
 
 /*RESET BROWSERS DEFAULT SETTINGS END*/
 
@@ -81,7 +84,7 @@ nav ol li.selected a, nav ol li a:hover {
 body .container footer {
     width: 100%;
     max-width: 960px;
-    position: fixed;
+    position: static;
     bottom: 0;
     /*background: darkgray;*/
 }
@@ -128,9 +131,13 @@ footer .links {
 .links ol li a {}
 .links ol li a:hover {}
 footer .copyright {
+    float: left;
+    font-size: bold;
+    width: 100%;
+}
+footer .copyright h6 {
     font-size: 10px;
     text-align: center;
-    font-size: bold;
 }
 
 /*FOOTER END*/
