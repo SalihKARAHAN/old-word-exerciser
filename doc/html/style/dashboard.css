@@ -1,10 +1,11 @@
 .dashboard-boxes {
     width: 748px;
-    height: 125px;
+    height: 130px;
     margin-left: auto;
     margin-right: auto;
     /*background-color: yellow;*/
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 .dashboard-boxes .box {
     width: 125px;
@@ -28,5 +29,125 @@
     float: left;
     width: 100%;
     font-weight: bold;
+    rgb(236, 199, 68) cursor: pointer;
+}
+.alfabets label {
     cursor: pointer;
 }
+.alfabets label:hover {
+    text-decoration: underline;
+}
+.search-area {
+    width: 100%;
+    height: 50px;
+    /*background-color: pink;*/
+    border-bottom: 2px solid black;
+}
+.search-area .alfabets {
+    text-align: center;
+}
+.search-area .form-row {
+    width: 100%;
+    /*background-color: brown;*/
+    float: left;
+    text-align: center;
+}
+.search-area input {
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+
+/*RESULT AREA CSS START*/
+
+#word-phonetic {
+    text-decoration: underline;
+    font-style: italic;
+}
+.results {
+    /*background-color: rgb(236, 199, 68);*/
+    width: 100%;
+}
+
+/*RESULT WORD LIST AREA CSS START*/
+
+.results .word-list {
+    float: left;
+    width: 465px;
+    /*background-color: rgb(163, 76, 231);*/
+    overflow-y: scroll;
+    height: 250px;
+    overflow-x: hidden;
+}
+.results .word-list .word {
+    width: 400px;
+    height: 30px;
+    /*background-color: rgb(70, 246, 94);*/
+    border: 1px solid black;
+    margin-bottom: 8px;
+    margin: 5px;
+    cursor: pointer;
+}
+.results .word-list .word:hover {
+    background-color: #dfdfdf
+}
+.results .word-list .word.selected {
+    background-color: rgb(172, 172, 172);
+    width: 100%;
+}
+.results .word-list .word label {
+    font-weight: bold;
+    font-size: 14px;
+    float: left;
+    text-indent: 20px;
+    line-height: 30px;
+}
+
+/*RESULT WORD LIST AREA CSS END*/
+
+
+/*RESULT WORD DETAIL AREA CSS START*/
+
+.results .word-detail {
+    border-left: 1px solid black;
+    width: 49%;
+    float: left;
+    /*background-color: lightblue;*/
+    padding-left: 10px;
+    overflow-y: scroll;
+    height: 250px;
+}
+.results .word-detail .detail-row {
+    float: left;
+    /*background-color: lightgreen;*/
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.results .word-detail .detail-row-column {
+    float: left;
+    width: 50%;
+}
+.results .word-detail .detail-row-column .sound,
+.results .word-detail .detail-row-column .sound label {
+    cursor: pointer;
+}
+/*.results .word-detail .detail-row-column .sound:hover {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}*/
+.results .word-detail .detail-row-column .mean {}
+.results .word-detail .detail-row-column .mean .word-kind {
+    font-style: italic;
+}
+.results .word-detail .detail-row-column .example label {
+    float: left;
+    text-indent: 20px;
+}
+#word-description {
+    text-indent: 20px;
+}
+
+/*RESULT WORD DETAIL AREA CSS END*/
+
+
+/*RESULT AREA CSS END*/

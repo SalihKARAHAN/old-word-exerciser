@@ -1,5 +1,16 @@
 /*RESET BROWSERS DEFAULT SETTINGS START */
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
 * {
     margin: 0;
     padding: 0;
@@ -15,13 +26,13 @@ a {
 h1 {
     font-size: 36px;
 }
-button{
+button {
     min-width: 30px;
     min-height: 20px;
     background-color: #B4B4B4;
     padding: 5px;
 }
-button:hover{
+button:hover {
     background-color: #909090;
 }
 
@@ -88,12 +99,16 @@ nav ol li.selected a, nav ol li a:hover {
 
 /*USER HEADER END*/
 
+
 /*CUSTOM CONTENT BODY START*/
-body section#content-body{
-    background-color: gray;
+
+body section#content-body {
+    /*background-color: gray;*/
     width: 100%;
 }
+
 /*CUSTOM CONTENT BODY END*/
+
 
 /*FOOTER START*/
 
@@ -157,3 +172,39 @@ footer .copyright h6 {
 }
 
 /*FOOTER END*/
+
+
+/*HELPER CLASSES START*/
+
+.per-100 {
+    width: 100% !important;
+}
+.per-90 {
+    width: 90% !important;
+}
+.per-80 {
+    width: 80% !important;
+}
+.per-70 {
+    width: 70% !important;
+}
+.per-60 {
+    width: 60% !important;
+}
+.per-50 {
+    width: 50% !important;
+}
+.per-40 {
+    width: 40% !important;
+}
+.per-30 {
+    width: 30% !important;
+}
+.per-20 {
+    width: 20% !important;
+}
+.per-10 {
+    width: 10% !important;
+}
+
+/*HELPER CLASSES END*/
