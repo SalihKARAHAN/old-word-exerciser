@@ -9,6 +9,10 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+button {
+    height: 20px;
+    min-width: 20px;
+}
 
 /*USER PANEL CSS START*/
 
@@ -107,6 +111,14 @@ section.inner {
 .result-area .result .result-row .name {
     float: left;
 }
+.result-area .result .result-row .name h4 {
+    /*font-weight: bold;
+    height: 30px;
+    line-height: 21px;
+    float: left;*/
+    font-size: 15px;
+    /*padding-right: 10px;*/
+}
 .result-area .result .result-row .state-icons {
     float: right;
 }
@@ -123,12 +135,12 @@ section.inner {
 /*CREATE WORKSPACE CSS START*/
 
 .create-area {}
-    .create-area h2{
-        margin-bottom: 15px;
-    }
-    .create-area .form-row{
-        margin-bottom: 10px;
-    }
+.create-area h2 {
+    margin-bottom: 15px;
+}
+.create-area .form-row {
+    margin-bottom: 10px;
+}
 .create-area input[type="text"] {
     width: 90%;
     border-bottom: 2px solid black;
@@ -136,3 +148,39 @@ section.inner {
 }
 
 /*CREATE WORKSPACE CSS END*/
+
+
+/*PERMISSION USER AREA CSS START*/
+
+.users {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.users .user label {
+    display: block;
+    width: 120px;
+    /*background-color: yellow;*/
+    float: left;
+}
+.users .user label[for="read"], .users .user label[for="write"], .users .user label[for="full"] {
+    width: auto;
+    margin-right: 15px;
+    margin-left: 5px;
+}
+.users .user input {
+    display: block;
+    background-color: green;
+    float: left;
+}
+#search-input {
+    width: auto;
+}
+#attach-user {
+    float: right;
+}
+#load-workspace,
+#create-workspace {
+    float: right;
+}
+
+/*PERMISSION USER AREA CSS END*/
