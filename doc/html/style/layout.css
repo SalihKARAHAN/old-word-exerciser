@@ -88,6 +88,12 @@ nav ol li.selected a, nav ol li a:hover {
 
 /*USER HEADER END*/
 
+/*CUSTOM CONTENT BODY START*/
+body section#content-body{
+    background-color: gray;
+    width: 100%;
+}
+/*CUSTOM CONTENT BODY END*/
 
 /*FOOTER START*/
 

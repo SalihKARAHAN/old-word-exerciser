@@ -1,0 +1,32 @@
+.dashboard-boxes {
+    width: 748px;
+    height: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: yellow;*/
+    margin-top: 20px;
+}
+.dashboard-boxes .box {
+    width: 125px;
+    height: 125px;
+    float: left;
+    /*background-color: green;*/
+    border: 1px solid black;
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.box h3 {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.box i {}
+.box label {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+}
