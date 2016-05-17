@@ -69,5 +69,34 @@ input[type="text"] {
     float: left;
     height: 450px;
     overflow-y: scroll;
-    background-color: rgb(49, 159, 176);
+    /*background-color: rgb(49, 159, 176);*/
+}
+.word-search .search-area {}
+.word-search .search-area input {
+    width: 450px;
+    position: fixed;
+}
+.word-search .word-list {
+    /*height: 400px;*/
+    margin-top: 35px;
+}
+.word-search .word-list .word-info {
+    height: 29px;
+    border-bottom: 1px solid black;
+    /*margin-bottom: 5px;*/
+    line-height: 28px;
+    display: block;
+    width: 100%;
+}
+.word-search .word-list .word-info label{
+    float: left;
+    margin-left: 15px;
+}
+
+.word-search .word-list .word-info i {
+    float: right;
+    line-height: 28px;
+    margin-right: 15px;
+    border-left: 1px solid black;
+    padding-left: 10px;
 }
