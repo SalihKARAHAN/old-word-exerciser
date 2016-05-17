@@ -88,6 +88,9 @@ input[type="text"] {
     display: block;
     width: 100%;
 }
+.word-search .word-list .word-info:hover{
+    background-color: rgb(200, 200, 200);
+}
 .word-search .word-list .word-info label{
     float: left;
     margin-left: 15px;
