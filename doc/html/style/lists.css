@@ -1,0 +1,73 @@
+input[type="text"] {
+    height: 28px;
+    border-bottom: 2px solid black;
+}
+.lists {
+    width: 350px;
+    float: left;
+    height: 450px;
+    /*background-color: rgb(134, 174, 204);*/
+}
+.lists div {
+    margin-bottom: 10px;
+}
+.lists .search-area input[type="text"] {
+    width: 335px
+}
+.lists .new-list-area input[type="text"] {
+    width: 224px
+}
+.lists .result-area {
+    width: 350px;
+    /*background-color: rgb(255, 182, 181);*/
+    overflow-y: scroll;
+    height: 380px;
+}
+.lists .result-area .list-info {
+    width: 320px;
+    height: 18px;
+    padding: 5px;
+    /*background-color: rgb(21, 201, 126);*/
+    border: 1px solid black;
+    float: left;
+    cursor: pointer;
+}
+.lists .result-area .list-info:hover {
+    background-color: rgb(200, 200, 200);
+}
+.lists .result-area .list-info.selected {
+    background-color: rgb(150, 150, 150);
+}
+.lists .result-area .list-info label {
+    width: 80px;
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    float: left;
+    cursor: pointer;
+    /*background-color: lightblue;*/
+}
+.lists .result-area .list-info label:first-child {
+    width: 200px;
+    /*background-color: azure;*/
+    text-indent: 15px;
+}
+.lists .result-area .list-info i {
+    float: right;
+    display: block;
+    padding-left: 5px;
+    padding-top: 2px;
+    /*background-color: lightgreen;*/
+    border-left: 1px solid black;
+    color: red;
+    height: 16px;
+    width: 18px;
+    cursor: pointer;
+}
+.word-search {
+    width: 450px;
+    float: left;
+    height: 450px;
+    overflow-y: scroll;
+    background-color: rgb(49, 159, 176);
+}
