@@ -150,8 +150,8 @@ nav ol li.selected a, nav ol li a:hover {
 
 /*CUSTOM CONTENT BODY START*/
 
-body section#content-body {
-    /*background-color: gray;*/
+body .container section#content-body {
+    /*background-color: rgb(71, 200, 161);*/
     width: 100%;
 }
 
@@ -163,9 +163,9 @@ body section#content-body {
 body .container footer {
     width: 100%;
     max-width: 960px;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
-    /*background: darkgray;*/
+    background: darkgray;
 }
 footer .footer-info {
     width: 100%;

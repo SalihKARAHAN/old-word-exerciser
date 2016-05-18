@@ -5,7 +5,7 @@ input[type="text"] {
 .lists {
     width: 350px;
     float: left;
-    height: 450px;
+    /*height: 450px;*/
     /*background-color: rgb(134, 174, 204);*/
 }
 .lists div {
