@@ -120,6 +120,7 @@ section.inner {
     display: block;
     background-color: green;
     float: left;
+    height: inherit;
 }
 #search-input {
     width: auto;
