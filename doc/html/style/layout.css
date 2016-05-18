@@ -117,6 +117,8 @@ nav ol li.selected a, nav ol li a:hover {
     /* numaraları kaldırır */
     display: none;
     background-color: white;
+    position: absolute;
+    width: 150px;
 }
 .user-panel ol.opened {
     /*padding: 5px;*/
