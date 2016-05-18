@@ -1,0 +1,136 @@
+
+button {
+    height: 20px;
+    min-width: 20px;
+}
+
+
+
+
+/*SECTION PANEL START*/
+
+section.inner:first-child {
+    border-left: none;
+}
+section.inner:not(:first-child) {
+    padding-left: 10px;
+}
+section.inner {
+    border-left: 2px solid black;
+    width: 48%;
+    margin-top: 20px;
+    float: left;
+    /*background: gray;*/
+}
+
+/*SECTION PANEL END*/
+
+
+/*SEARCH AREA START*/
+
+.inner .search-area input {
+    width: 90%;
+    border-bottom: 2px solid black;
+    height: 30px;
+    margin-bottom: 30px;
+}
+
+/*SEARCH AREA END*/
+
+
+/*RESULT AREA START*/
+
+.result-area {
+    margin-right: 5px;
+    overflow-y: scroll;
+    height: 300px;
+}
+.result-area .result {
+    border: 1px solid black;
+    width: 90%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.result-area .result .result-row {
+    float: left;
+    width: 100%;
+    /*background-color: green;*/
+}
+.result-area .result .result-row .name {
+    float: left;
+}
+.result-area .result .result-row .name h4 {
+    /*font-weight: bold;
+    height: 30px;
+    line-height: 21px;
+    float: left;*/
+    font-size: 15px;
+    /*padding-right: 10px;*/
+}
+.result-area .result .result-row .state-icons {
+    float: right;
+}
+.result-area .result .result-row .word-count {
+    float: left;
+}
+.result-area .result .result-row .date-info {
+    float: right;
+}
+
+/*RESULT AREA END*/
+
+
+/*CREATE WORKSPACE CSS START*/
+
+.create-area {}
+.create-area h2 {
+    margin-bottom: 15px;
+}
+.create-area .form-row {
+    margin-bottom: 10px;
+}
+.create-area input[type="text"] {
+    width: 90%;
+    border-bottom: 2px solid black;
+    height: 30px;
+}
+
+/*CREATE WORKSPACE CSS END*/
+
+
+/*PERMISSION USER AREA CSS START*/
+
+.users {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.users .user label {
+    display: block;
+    width: 120px;
+    /*background-color: yellow;*/
+    float: left;
+}
+.users .user label[for="read"], .users .user label[for="write"], .users .user label[for="full"] {
+    width: auto;
+    margin-right: 15px;
+    margin-left: 5px;
+}
+.users .user input {
+    display: block;
+    background-color: green;
+    float: left;
+    height: inherit;
+}
+#search-input {
+    width: auto;
+}
+#attach-user {
+    float: right;
+}
+#load-workspace,
+#create-workspace {
+    float: right;
+}
+
+/*PERMISSION USER AREA CSS END*/

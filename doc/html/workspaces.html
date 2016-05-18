@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style/layout.css" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="style/workspaces.css" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="style/font-awesome.min.css" title="no title" charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="nav">
+                <nav>
+                    <ol>
+                        <li class="selected">
+                            <a href="#/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="#/workspaces">Workspace</a>
+                        </li>
+                        <li>
+                            <a href="#/words">Words</a>
+                        </li>
+                        <li>
+                            <a href="#/lists">Lists</a>
+                        </li>
+                        <li>
+                            <a href="#/kinds">Kinds</a>
+                        </li>
+                        <li>
+                            <a href="#/games">Games</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="user-header">
+                <!-- <a href="#register">Register</a> |
+                <a href="#login">Sign In</a> -->
+                <div class="user-panel">
+                    <h3>
+                        <i class="fa fa-user fa-lg"></i>
+                        <strong id="userpanel">Salih KARAHAN</strong>
+                    </h3>
+                    <ol id="usermenu">
+                        <li>
+                            <a href="#profile">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#settings">Settings</a>
+                        </li>
+                        <li class="block-start">
+                            <a href="#logout">Logout</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </header>
+        <section class="main-body">
+            <section class="inner">
+                <div class="search-area">
+                    <input type="text" name="searchbar" value="" placeholder="workspace name...">
+                </div>
+                <div class="result-area">
+
+                    <div class="result">
+                        <div class="result-row">
+                            <div class="name">
+                                <h4>Workspace Name</label>
+                                <i class="fa fa-user fa-lg"></i>
+                                <i class="fa fa-users fa-lg"></i>
+                            </div>
+                            <div class="state-icons">
+                                <i class="fa fa-gear fa-2x"></i>
+                                <i class="fa fa-lock fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="result-row">
+                            <div class="word-count">
+                                <label>0000000</label>
+                            </div>
+                            <div class="date-info">
+                                <label>00.00.0000</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+            <section class="inner create-area">
+                <h2>Create a new / Edit workspace</h2>
+                <div class="form-row">
+                    <label for="workspacename">Workspace name: </label>
+                    <input type="text" name="workspacename" value="" placeholder="New Workspace Name...">
+                </div>
+                <div class="form-row">
+                    <label for="isshared">Workspace Shared: </label>
+                    <input type="checkbox" name="isshared">
+                </div>
+                <div class="form-row">
+                    <h4>Permission</h4>
+                                <div class="form-row">
+                                    <div class="users">
+                                        <div class="user">
+                                            <label>Everyone <i class="fa fa-users"></i></label>
+                                            <input type="checkbox" name="read">
+                                            <label for="read">Read</label>
+                                            <input type="checkbox" name="write">
+                                            <label for="write">Write</label>
+                                            <input type="checkbox" name="full">
+                                            <label for="full">Full</label>
+                                            <button class="fa fa-trash fa-lg"></button>
+                                        </div>
+                                        <div class="user">
+                                            <label>Salih KARAHAN <i class="fa fa-user"></i></label>
+                                            <input type="checkbox" name="read">
+                                            <label for="read">Read</label>
+                                            <input type="checkbox" name="write">
+                                            <label for="write">Write</label>
+                                            <input type="checkbox" name="full">
+                                            <label for="full">Full</label>
+                                            <button class="fa fa-trash fa-lg"></button>
+                                        </div>
+                                        <div class="user">
+                                            <label>Tamer UZUN <i class="fa fa-user"></i></label>
+                                            <input type="checkbox" name="read">
+                                            <label for="read">Read</label>
+                                            <input type="checkbox" name="write">
+                                            <label for="write">Write</label>
+                                            <input type="checkbox" name="full">
+                                            <label for="full">Full</label>
+                                            <button class="fa fa-trash fa-lg"></button>
+                                        </div>
+                                        <div class="user">
+                                            <label>Erhan GİDİCİ <i class="fa fa-user"></i></label>
+                                            <input type="checkbox" name="read">
+                                            <label for="read">Read</label>
+                                            <input type="checkbox" name="write">
+                                            <label for="write">Write</label>
+                                            <input type="checkbox" name="full">
+                                            <label for="full">Full</label>
+                                            <button class="fa fa-trash fa-lg"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="searchuser">Search: </label>
+                                    <input id="search-input" type="text" name="searchuser" placeholder="username">
+                                    <button id="attach-user" type="button">
+                                        <i class="fa fa-user-plus fa-lg"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <button id="create-workspace" type="button" name="create">
+                                    <i class="fa fa-plus fa-lg"></i> Create Workspace
+                                </button>
+                                <button id="load-workspace" type="button" name="create">
+                                    <i class="fa fa-sign-in fa-lg"></i> Load Workspace
+                                </button>
+                            </div>
+            </section>
+        </section>
+        <footer>
+            <div class="footer-info">
+                <div class="languages">
+                    <a href="#/tr" class="selected">TR</a> |
+                    <a href="#/tr">EN</a> |
+                    <a href="#/tr">DU</a> |
+                    <a href="#/tr">FR</a> |
+                    <a href="#/tr">RU</a>
+                </div>
+                <div class="links">
+                    <ol>
+                        <li>
+                            <a href="#/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="#/workspaces">Workspace</a>
+                        </li>
+                        <li>
+                            <a href="#/words">Words</a>
+                        </li>
+                        <li>
+                            <a href="#/lists">Lists</a>
+                        </li>
+                        <li>
+                            <a href="#/kinds">Kinds</a>
+                        </li>
+                        <li>
+                            <a href="#/games">Games</a>
+                        </li>
+                    </ol>
+                    <ol>
+                        <li><a href="#/about">About</a></li>
+                        <li><a href="#/donate">Donate</a></li>
+                        <li><a href="#/developers">Developers</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="copyright">
+                2016&copy; All rights reserved! - Powered by Angular
+            </div>
+        </footer>
+        </div>
+        <script src="script/user-panel.js" charset="utf-8"></script>
+</body>
+
+</html>

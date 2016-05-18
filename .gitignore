@@ -1,2 +1,9 @@
 # discard all hidden files create by the operation system
 .*
+
+# ignore custom files
+*.doc
+*.docx
+
+# ignore third party source folder
+3th/
