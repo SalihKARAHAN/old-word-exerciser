@@ -1,0 +1,17 @@
+{
+  "name": "word-exercise-service",
+  "version": "1.0.0",
+  "description": "api service for word exercise application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Salih KARAHAN",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "jquery": "^2.2.3"
+  }
+}
