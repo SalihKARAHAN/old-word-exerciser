@@ -1,11 +1,22 @@
 {
-    "name": "word-exerciser",
-    "version": "0.0.0",
-    "description": "personal word exercise application for study to english",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Salih KARAHAN",
-    "license": "MIT"
+  "name": "word-exerciser",
+  "version": "0.0.0",
+  "description": "personal word exercise application for study to english",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Salih KARAHAN",
+  "license": "MIT",
+  "directories": {
+    "doc": "doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalihKARAHAN/word-exerciser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SalihKARAHAN/word-exerciser/issues"
+  },
+  "homepage": "https://github.com/SalihKARAHAN/word-exerciser#readme"
 }
