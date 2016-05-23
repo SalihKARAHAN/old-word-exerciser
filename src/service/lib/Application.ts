@@ -2,7 +2,10 @@ import http = require('http');
 import httpManager = require('./HttpManager');
 import Router = require('./Router');
 
+const _wwwRoot:string='';
+
 class Application {
+
     private _routeInfo: Router = null;
 
     constructor() {

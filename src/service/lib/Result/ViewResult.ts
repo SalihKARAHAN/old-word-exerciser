@@ -1,4 +1,6 @@
-class ViewResult {
+import IResult = require('./IResult');
+
+class ViewResult implements IResult {
 
 }
 

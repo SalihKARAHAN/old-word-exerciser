@@ -1,0 +1,5 @@
+interface IResult {
+    
+}
+
+export = IResult;
