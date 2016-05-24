@@ -1,10 +1,11 @@
-import {Method}  from '../lib/Enums/Http.Method';
+import {Method}  from '../lib/Http.Method';
+import RouteTable = require('../lib/RouteTable');
 import Router = require('../lib/Router');
 
 class RouteConfig extends Router {
-    RegisterCustomRoutes(): void {
-        super.AddRoute("HomePage", "/", "Home", "Index", Method.Get);
-        //...
+    RegisterCustomRoutes(routes: RouteTable): void {
+        routes.Add("HomePage", "/", "Home", "Index", Method.GET);
+        routes.Add("LoginPage", "/Login", "Authentication", "LoginView", Method.GET);
     }
 }
 
