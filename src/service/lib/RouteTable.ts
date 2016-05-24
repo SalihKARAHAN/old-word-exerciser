@@ -1,34 +1,29 @@
-import {Method}  from './Enums/Http.Method';
-
-class RouteData {
-    private _name: string;
-    private _url: string;
-    private _controllerName: string;
-    private _actionName: string;
-    private _method: Method;
-
-    constructor(name: string, url: string, controllerName: string, actionName: string, method: Method) {
-        this._name = name;
-        this._url = url;
-        this._controllerName = controllerName;
-        this._actionName = actionName;
-        this._method = method;
-    }
-}
+import {Method}  from './Http.Method';
+import RouteData = require('./RouteData');
 
 class RouteTable {
-    private _route: {} = {};
+    private _routeInfo: {};
 
+    constructor() {
+        this._routeInfo = {}
+    }
+
+    // TODO: needed target url customization
     public Add(name: string, targetUrl: string, nameOfController: string, nameOfAction: string, method: Method): void {
-        let url: string = this._route[targetUrl];
+        let url: string = this._routeInfo[targetUrl];
 
         if (!url) {
-            this._route[targetUrl] = new RouteData(name, targetUrl, nameOfController, nameOfAction, method);
+            this._routeInfo[targetUrl] = new RouteData(name, targetUrl, nameOfController, nameOfAction, method);
         }
     }
 
-    public Change(): void {
+    public Change(name: string, newTargetUrl: string, nameOfController: string, nameOfAction: string, method: Method): void {
 
+    }
+
+    public GetRouteData(url: string, methodType: Method): RouteData {
+        let routeData: RouteData = this._routeInfo[url];
+        return routeData;
     }
 }
 
