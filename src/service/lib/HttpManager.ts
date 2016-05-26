@@ -4,6 +4,7 @@ import Router = require('./Router');
 import RouteData = require('./RouteData');
 import {RouteCanNotFindException} from './Exception/RouteCanNotFindException';
 import IResult = require('./Result/IResult');
+import Constants = require('./Constants');
 
 class HttpManager {
     private _router: Router = null;
@@ -17,6 +18,7 @@ class HttpManager {
         let methodType: string = request.method;
         let host: string = request.headers.host;
         let requestContext: RequestContext = new RequestContext(url, methodType);
+        // TODO: request validation?? content length, url, headers ...
         if (url !== '/favicon.ico') {
 
             console.log(url);
@@ -43,7 +45,7 @@ class HttpManager {
             let controllerInstance = new currentController();
             // console.log('\ncontrollerInstance -> ', controllerInstance);
             let actionName = routeData.GetActionName();
-            // console.log('\nactionName -> ', actionName);
+            console.log('\nactionName -> ', actionName);
             // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
             let action = controllerInstance[actionName];
 
@@ -51,14 +53,14 @@ class HttpManager {
             // TODO: how to access and get return type
 
             let result: IResult = action();
-            // console.log('result of executed action -> ', result);
+            console.log('result of executed action -> ', result);
 
             // TODO: buranın daha iyileştirilmesi gerekiyor.
 
             console.log(__dirname);
             console.log(__filename);
 
-            if (result.Name === 'ViewResult') {
+            if (result.Name === Constants.Results.HTML) {
                 // find view path;
                 let fileSystem = require('fs');
                 let pathManager = require('path');
