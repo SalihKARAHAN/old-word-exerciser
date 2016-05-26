@@ -1,11 +1,12 @@
+import Constants = require('../Constants');
 import IResult = require('./IResult');
 
-class ViewResult implements IResult {
+class HtmlResult implements IResult {
     public Name: string = null;
     public Content: string = null;
 
     constructor() {
-        this.Name = 'ViewResult';
+        this.Name = Constants.Results.HTML;
     }
 
     public GetContent(): string {
@@ -17,4 +18,4 @@ class ViewResult implements IResult {
     }
 }
 
-export = ViewResult;
+export = HtmlResult;

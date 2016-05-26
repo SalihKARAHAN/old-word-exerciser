@@ -1,12 +1,12 @@
 import Controller = require('../../lib/Controller');
 import IResult = require('../../lib/Result/IResult');
-import ViewResult = require('../../lib/Result/ViewResult');
+import HtmlResult = require('../../lib/Result/HtmlResult');
 import JsonResult = require('../../lib/Result/JsonResult');
 
 class AuthenticationController extends Controller {
 
-    public LoginView(): ViewResult {
-        return super.View();
+    public LoginView(): HtmlResult {
+        return super.Html();
     }
 
     public AuthenticateUser():JsonResult{

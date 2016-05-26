@@ -1,11 +1,11 @@
 import IResult = require('../../lib/Result/IResult');
-import ViewResult = require('../../lib/Result/ViewResult');
+import HtmlResult = require('../../lib/Result/HtmlResult');
 import Controller = require('../../lib/Controller');
 
 class HomeController extends Controller{
 
-    public Index():ViewResult{
-        return super.View()
+    public Index():HtmlResult{
+        return super.Html()
     }
 }
 

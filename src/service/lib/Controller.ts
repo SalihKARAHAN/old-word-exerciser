@@ -1,13 +1,13 @@
 import IResult = require('./Result/IResult');
-import ViewResult = require('./Result/ViewResult');
+import HtmlResult = require('./Result/HtmlResult');
 
 class Controller{
 
-    public View(viewPath?:string):ViewResult;
-    public View(controllerName:string, actionName:string):ViewResult;
+    public Html(viewPath?:string):HtmlResult;
+    public Html(controllerName:string, actionName:string):HtmlResult;
 
-    public View(viewPathOrControllerName:string, actionName?:string):ViewResult{
-            let result:ViewResult = new ViewResult();
+    public Html(viewPathOrControllerName:string, actionName?:string):HtmlResult{
+            let result:HtmlResult = new HtmlResult();
             return result;
     }
 

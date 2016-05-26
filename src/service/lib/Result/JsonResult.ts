@@ -1,3 +1,4 @@
+import Constants = require('../Constants');
 import IResult = require('./IResult');
 
 class JsonResult implements IResult {
@@ -5,7 +6,7 @@ class JsonResult implements IResult {
     public Content:string=null;
 
     constructor(){
-        this.Name = 'JsonResult';
+        this.Name = Constants.Results.JSON;
     }
 
     public GetContent():string{
