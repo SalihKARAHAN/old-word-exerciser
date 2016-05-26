@@ -1,10 +1,19 @@
 import IResult = require('./IResult');
 
 class ViewResult implements IResult {
-    public _createdDate:string=null;
+    public Name: string = null;
+    public Content: string = null;
 
-    constructor(){
-        this._createdDate = new Date().toDateString();
+    constructor() {
+        this.Name = 'ViewResult';
+    }
+
+    public GetContent(): string {
+        return this.Content;
+    }
+
+    public SetContent(content: string): void {
+        this.Content = content;
     }
 }
 

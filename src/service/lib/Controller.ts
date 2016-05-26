@@ -3,10 +3,10 @@ import ViewResult = require('./Result/ViewResult');
 
 class Controller{
 
-    public View(viewPath?:string):IResult;
-    public View(controllerName:string, actionName:string):IResult;
+    public View(viewPath?:string):ViewResult;
+    public View(controllerName:string, actionName:string):ViewResult;
 
-    public View(viewPathOrControllerName:string, actionName?:string):IResult{
+    public View(viewPathOrControllerName:string, actionName?:string):ViewResult{
             let result:ViewResult = new ViewResult();
             return result;
     }

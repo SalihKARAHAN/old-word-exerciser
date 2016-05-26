@@ -1,5 +1,6 @@
 interface IResult {
-    _createdDate:string;
+    Name:string;
+    Content:string;
 }
 
 export = IResult;

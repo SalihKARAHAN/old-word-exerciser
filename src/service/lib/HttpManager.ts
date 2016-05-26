@@ -13,60 +13,91 @@ class HttpManager {
     }
 
     Dispatch(request: any, response: any): void {
-        // FIXME: this._router sadece start anında oluşuyor ve dispose oluyor. Sonraki requestlerde this._router nesnesi undefined olarak geliyor. Yani her request için sadece Dispatch metodu invoke ediliyor. Burada da her seferinde yeniden route configi okumak biraz mantıksız bir işlem fakat şuan için yapabilecel başka bir şey yok gibi. Dispatch her çalıştığında route bilgilerini yeniden okumalı.
-        // Çünkü Dispatch çalıştığında Server içerisinde çalışıyor. HttpManager sınıfını göremiyor.
-
         let url: string = request.url;
         let methodType: string = request.method;
         let host: string = request.headers.host;
         let requestContext: RequestContext = new RequestContext(url, methodType);
+        if (url !== '/favicon.ico') {
 
-        console.log(url);
-        console.log(methodType);
-        console.log(host);
-        // find method
-        // how to find?
-        // first looking request url
+            console.log(url);
+            console.log(methodType);
+            console.log(host);
+            // find method
+            // how to find?
+            // first looking request url
 
-        let routeData: RouteData = global.router.GetRouteData(requestContext.GetUrl(), requestContext.GetMethodType());
-        console.log('finded RouteData -> ', routeData);
-        if (routeData == null) {
-            throw new RouteCanNotFindException();
+            let routeData: RouteData = global.router.GetRouteData(requestContext.GetUrl(), requestContext.GetMethodType());
+            // console.log('finded RouteData -> ', routeData);
+            if (routeData == null) {
+                throw new RouteCanNotFindException();
+            }
+            debugger;
+            //   =====================       TEST AREA       =====================
+            let path: string = '../wwwroot/Controllers/' + routeData.GetControllerName() + 'Controller';
+            let currentController = require(path);
+            // console.log('\nfinded controller -> ', currentController);
+            // console.log('\nfinded new controller -> ', new currentController());
+            // let HomeController = require('./HomesController');
+            // console.log('\nfinded new controller.action -> ', new HomeController().Index);
+            // console.log('\nfinded new controller<t>.action -> ', new currentController().Index);
+            let controllerInstance = new currentController();
+            // console.log('\ncontrollerInstance -> ', controllerInstance);
+            let actionName = routeData.GetActionName();
+            // console.log('\nactionName -> ', actionName);
+            // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
+            let action = controllerInstance[actionName];
+
+            // TODO: how to access and get action arguments
+            // TODO: how to access and get return type
+
+            let result: IResult = action();
+            // console.log('result of executed action -> ', result);
+
+            // TODO: buranın daha iyileştirilmesi gerekiyor.
+
+            console.log(__dirname);
+            console.log(__filename);
+
+            if (result.Name === 'ViewResult') {
+                // find view path;
+                let fileSystem = require('fs');
+                let pathManager = require('path');
+                let customPath = '../wwwroot/Views/' + routeData.GetControllerName() + '/' + routeData.GetActionName() + '.html';
+
+                // TODO: content cache???
+                fileSystem.readFile(customPath, function(err, html) {
+                    if (err) {
+                        // TODO: require const declaration file for const values!!!
+                        response.writeHeader(200, { "Content-Type": "text/html" });
+                        response.write(err);
+                        response.end();
+                    }
+                    response.writeHeader(200, { "Content-Type": "text/html" });
+                    response.write(html);
+                    response.end();
+                })
+            }
+            if (result.Name === 'JsonResult') {
+
+            }
+
+            // response.write(result.Name);
+            // response.statusCode = 200;
+            // response.end();
+            // let action = currentController[routeData.GetActionName()];
+            // route table has include request url
+            // is exist?
+            //      if has exist execute defined action of controller
+            //      else look to url and try to parse.
+            //      else exception
+
+            // authentication & authorization
+            // before decorators
+            // invoke action
+            // after decorators
+            //
+            //
         }
-        let path: string = '../wwwroot/Controllers/' + routeData.GetControllerName() + 'Controller';
-        let currentController = require(path);
-        // console.log('\nfinded controller -> ', currentController);
-        // console.log('\nfinded new controller -> ', new currentController());
-        // let HomeController = require('./HomesController');
-        // console.log('\nfinded new controller.action -> ', new HomeController().Index);
-        // console.log('\nfinded new controller<t>.action -> ', new currentController().Index);
-        let controllerInstance = new currentController();
-        console.log('\ncontrollerInstance -> ', controllerInstance);
-        let actionName = routeData.GetActionName();
-        console.log('\nactionName -> ', actionName);
-        console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
-        let action = controllerInstance[actionName];
-
-        // TODO: how to access and get action arguments
-
-        let result:IResult = action();
-        console.log('result of executed action -> ', result);
-        response.write(result._createdDate);
-        response.statusCode = 200;
-        response.end();
-        // let action = currentController[routeData.GetActionName()];
-        // route table has include request url
-        // is exist?
-        //      if has exist execute defined action of controller
-        //      else look to url and try to parse.
-        //      else exception
-
-        // authentication & authorization
-        // before decorators
-        // invoke action
-        // after decorators
-        //
-        //
     }
 }
 
