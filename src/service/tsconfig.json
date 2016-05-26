@@ -14,13 +14,17 @@
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "outDir":"build/"
+        "outDir": "build/"
     },
     "exclude": [
         "node_modules",
         "typings/browser",
         "typings/browser.d.ts"
     ],
+    "resolution": {
+        "main": "typings/main",
+        "browser": "typings/browser"
+    },
     "compileOnSave": true,
     "buildOnSave": true,
     "atom": {
