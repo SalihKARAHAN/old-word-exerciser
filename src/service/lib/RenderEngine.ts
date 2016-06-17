@@ -1,6 +1,6 @@
 import Page = require('./Page');
 import Parser = require('./HtmlParser');
-
+import IResult = require('./Result/IResult');
 
 class RenderEngine{
     private _parser:Parser;
@@ -12,7 +12,25 @@ class RenderEngine{
         this._parser = new Parser();
     }
 
-    public Layout(layoutPath:string):void{
+    public RenderResult(result:IResult):string{
+        let htmlOutput: string = null;
+
+        /**
+         * look this content, layout decleration is exist?
+         * 		yes:   run layout is exist on defined path or default
+         * 			yes:    read layout file
+         * 					find <{Page.Body.Render()}> decleration
+         * 					if Page.Body.Render not defined throw exception!!!
+         * 					replace this decleration with result.Content and delete layout decleration
+         */
+        return htmlOutput;
+    }
+
+    private RegisterEngines():void{
+
+    }
+
+    private Layout(layoutPath:string):void{
         //check the layout exist in the path?
         let isExist:boolean = this.IsLayoutExist(layoutPath);
 

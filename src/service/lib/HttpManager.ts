@@ -5,6 +5,7 @@ import RouteData = require('./RouteData');
 import {RouteCanNotFindException} from './Exception/RouteCanNotFindException';
 import IResult = require('./Result/IResult');
 import Constants = require('./Constants');
+import RenderEngine = require('./RenderEngine');
 
 class HttpManager {
     private _router: Router = null;
@@ -61,6 +62,9 @@ class HttpManager {
                 //console.log(__dirname);
                 //console.log(__filename);
 
+                let renderEngine = new RenderEngine();
+                renderEngine.RenderResult(result);
+
                 if (result.Name === Constants.Results.HTML) { // buradaki if yapısı için strategy pattern implementasyonu yapılabilir! Her resultun nasıl değerlendireleceği result'u değerlendiren yapının kendisinde olmalı!
                     console.log('Result = HTML!!')
 
@@ -94,7 +98,7 @@ class HttpManager {
                         */
                         response.write(html);
                         response.end();
-                    })
+                    });
                 }
                 if (result.Name === 'JsonResult') {
 
