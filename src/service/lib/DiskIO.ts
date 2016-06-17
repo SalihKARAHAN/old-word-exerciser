@@ -4,6 +4,7 @@ import FileSystem = require('fs');
 class DiskIO implements IIO {
 
     public Read(path: string, encoding: string, callback: any): void {
+        debugger;
         FileSystem.readFile(path, encoding, function(error, text) {
             if (!callback) {
                 throw 'Error message! (DiskIO.TS;ln:9)';
@@ -15,7 +16,7 @@ class DiskIO implements IIO {
             callback(text);
         });
     }
-    
+
 }
 
 export = DiskIO;

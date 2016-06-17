@@ -12,19 +12,55 @@ import DiskIO = require('./DiskIO');
 
 class HttpManager {
     private _router: Router = null;
+    private _io: IIO = null;
+
     constructor(router: Router) {
         this._router = router;
         global.router = this._router;
+        this._io = new DiskIO();
     }
 
     Dispatch(request: any, response: any): void {
+        this._io = this._io || new DiskIO();
+
         try {
             let url: string = request.url;
             let methodType: string = request.method;
             let host: string = request.headers.host;
             let requestContext: RequestContext = new RequestContext(url, methodType);
             // TODO: request validation?? content length, url, headers ...
-            if (url !== '/favicon.ico') {
+
+            /*
+                css ve js workagound
+             */
+            // console.log(url.substr(1, 6))
+            /*
+            bu script style image page vb ayrımları kendi içlerinde yapılabilir
+            bağpımsız yapılara dönüştürmem gerekiyor! TODO:  */
+
+            let requestType: string = undefined;
+
+            if (url.substr(1, 6) === 'Styles') {
+                requestType = 'style';
+                let afterPath = url.substr(7, url.length - 1);
+                let rootPath = '../wwwroot/Contents/Styles' + afterPath;
+                console.log('Target path for styles= ', rootPath); // adreste style yok ise null dönmeli 404 olarak!
+                debugger;
+                this._io.Read(rootPath, 'utf8', function(text) {
+                    response.writeHeader(200, { 'Content-Type': 'text/css' });
+                    // console.log('Css= ', text);
+                    response.write(text);
+                    response.end;
+                });
+            }
+
+            if (url.substr(1, 7) === 'Scripts') {
+
+            }
+
+
+
+            if (url !== '/favicon.ico' && requestType === undefined) {
 
                 console.log(url);
                 console.log(methodType);
