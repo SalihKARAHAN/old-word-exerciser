@@ -7,6 +7,9 @@ import IResult = require('./Result/IResult');
 import Constants = require('./Constants');
 import RenderEngine = require('./RenderEngine');
 
+import IIO = require('./IIO');
+import DiscIO = require('./DiscIO');
+
 class HttpManager {
     private _router: Router = null;
     constructor(router: Router) {
@@ -21,6 +24,21 @@ class HttpManager {
             let host: string = request.headers.host;
             let requestContext: RequestContext = new RequestContext(url, methodType);
             // TODO: request validation?? content length, url, headers ...
+
+            /*
+                css ve js workagound
+             */
+            console.log(url.substr(1, 6))
+            if (url.substr(1, 6) === 'Styles') {
+
+            }
+
+            if (url.substr(1, 7) === 'Scripts') {
+
+            }
+
+
+
             if (url !== '/favicon.ico') {
 
                 console.log(url);
@@ -47,7 +65,7 @@ class HttpManager {
                 let controllerInstance = new currentController();
                 // console.log('\ncontrollerInstance -> ', controllerInstance);
                 let actionName = routeData.GetActionName();
-                console.log('\nactionName -> ', actionName);
+                // console.log('\nactionName -> ', actionName);
                 // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
                 let action = controllerInstance[actionName];
 
@@ -56,20 +74,15 @@ class HttpManager {
 
                 let result: IResult = action();
                 console.log('result of executed action -> ', result);
-
                 // TODO: buranın daha iyileştirilmesi gerekiyor.
 
                 //console.log(__dirname);
                 //console.log(__filename);
 
-                let renderEngine = new RenderEngine();
-                renderEngine.RenderResult(result);
-
                 if (result.Name === Constants.Results.HTML) { // buradaki if yapısı için strategy pattern implementasyonu yapılabilir! Her resultun nasıl değerlendireleceği result'u değerlendiren yapının kendisinde olmalı!
                     console.log('Result = HTML!!')
 
                     // find view path;
-                    let fileSystem = require('fs');
                     let pathManager = require('path');
 
                     let customPath = '../wwwroot/Contents/Views/' + routeData.GetControllerName() + '/' + routeData.GetActionName() + '.html';
@@ -77,28 +90,52 @@ class HttpManager {
 
                     // TODO: file is exist on path
                     // TODO: content cache???
-                    fileSystem.readFile(customPath, function(err, html) {
-                        if (err) {
-                            // TODO: require const declaration file for const values!!!
+                    let io: IIO = new DiscIO();
+
+                    io.Read(customPath, 'utf8', function(text) {
+                        result.Content = text;
+                        let renderEngine: RenderEngine = new RenderEngine();
+
+                        renderEngine.RenderResult(result, function(renderedResult: IResult) {
                             response.writeHeader(200, { "Content-Type": "text/html" });
-                            response.write(err);
+                            response.write(renderedResult.Content);
                             response.end();
-                        }
-                        response.writeHeader(200, { "Content-Type": "text/html" });
-                        // burada okunan html dosyası içerisinde <{}> deklerasyonu var mı diye bakılmalı.
-                        /* page obj deklerasyonu var ise bu deklerasyon parse edilmeli
-                         *      1- bu deklerasyon için bir adet şemaya ihtiyaç var.
-                         *      2- ilgili html dosyası içerisindeki deklerasyonları bulup şema nesnesine
-                         *         aktaracak ve daha sonra gerekli komutları yerine getirecek bir iş sınıfına da ihtiyaç var
-                         *      Örn:  Page.Layout deklerasyonuna rastlanıldığında ilgili sayfanın bir layout'a ait olduğ anlaşılmalı.
-                         *            Her deklerasyon için bir komut bulunmalı ve deklerasyonları kullanmak için bu komutlar kullanılmalı.
-                         *            Örneğin Layout komutu deklare edilen dizindeki html sayfasını okumalı ve bu sayfa içerisindeki body yazan
-                         *            kısma bir önceki html dsyasındaki html değerleri eklenilmeli. Böyece template belirtebilme mümkün olmakta.
-                         *
-                        */
-                        response.write(html);
-                        response.end();
+                        });
+
                     });
+
+                    // fileSystem.readFile(customPath, 'utf8', function(err, html) {
+                    //     if (err) {
+                    //         // TODO: require const declaration file for const values!!!
+                    //         response.writeHeader(200, { "Content-Type": "text/html" });
+                    //         response.write(err);
+                    //         response.end();
+                    //     }
+                    //     response.writeHeader(200, { "Content-Type": "text/html" });
+                    //     // burada okunan html dosyası içerisinde <{}> deklerasyonu var mı diye bakılmalı.
+                    //     /* page obj deklerasyonu var ise bu deklerasyon parse edilmeli
+                    //      *      1- bu deklerasyon için bir adet şemaya ihtiyaç var.
+                    //      *      2- ilgili html dosyası içerisindeki deklerasyonları bulup şema nesnesine
+                    //      *         aktaracak ve daha sonra gerekli komutları yerine getirecek bir iş sınıfına da ihtiyaç var
+                    //      *      Örn:  Page.Layout deklerasyonuna rastlanıldığında ilgili sayfanın bir layout'a ait olduğ anlaşılmalı.
+                    //      *            Her deklerasyon için bir komut bulunmalı ve deklerasyonları kullanmak için bu komutlar kullanılmalı.
+                    //      *            Örneğin Layout komutu deklare edilen dizindeki html sayfasını okumalı ve bu sayfa içerisindeki body yazan
+                    //      *            kısma bir önceki html dsyasındaki html değerleri eklenilmeli. Böyece template belirtebilme mümkün olmakta.
+                    //      *
+                    //     */
+                    //
+                    //     console.log(html);
+                    //     result.Content = html;
+                    //     console.log('Result.Content=', result.Content);
+                    //
+                    //
+                    //     var renderEngine: RenderEngine = new RenderEngine();
+                    //     renderEngine.RenderResult(result);
+                    //     console.log('renderEngine')
+                    //
+                    // });
+
+
                 }
                 if (result.Name === 'JsonResult') {
 
@@ -119,7 +156,7 @@ class HttpManager {
                 // invoke action
                 // after decorators
                 //
-                //
+
             }
         } catch (error) {
             response.writeHeader(200, { "Content-Type": "text/html" });

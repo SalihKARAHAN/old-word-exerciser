@@ -16,7 +16,7 @@ class Application {
     public Start(port: number, callback: any): void {
         let manager = new httpManager(this._router);
         let server = http.createServer(manager.Dispatch);
-        server.listen(port, callback);
+        server.listen(port, 'localhost', callback);
     }
 
     public RegisterRouter(router: Router): void {
