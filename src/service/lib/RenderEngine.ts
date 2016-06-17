@@ -1,9 +1,8 @@
 import Page = require('./Page');
 import Parser = require('./HtmlParser');
 import IResult = require('./Result/IResult');
-
 import IIO = require('./IIO');
-import DiskIO = require('./DiskIO');
+import DiscIO = require('./DiscIO');
 
 class RenderEngine {
     private _parser: Parser;
@@ -21,7 +20,7 @@ class RenderEngine {
 
         console.log('Clean HTML out of methot= ', result.Content);
         if (hasDefination) {
-            let io: IIO = new DiskIO();
+            let io: IIO = new DiscIO();
             let layoutPath: string = '../wwwroot/Contents/Views/Templates/Page.Layout.html';
             // TODO: check layoout is exist on the path!
 
@@ -50,6 +49,9 @@ class RenderEngine {
          */
     }
 
+    private RegisterEngines():void{
+
+    }
     public Layout(layoutPath: string): void {
         //check the layout exist in the path?
         let isExist: boolean = this.IsLayoutExist(layoutPath);

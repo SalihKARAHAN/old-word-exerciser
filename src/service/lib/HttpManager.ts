@@ -6,9 +6,9 @@ import {RouteCanNotFindException} from './Exception/RouteCanNotFindException';
 import IResult = require('./Result/IResult');
 import Constants = require('./Constants');
 import RenderEngine = require('./RenderEngine');
-import IIO = require('./IIO');
-import DiskIO = require('./DiskIO');
 
+import IIO = require('./IIO');
+import DiscIO = require('./DiscIO');
 
 class HttpManager {
     private _router: Router = null;
@@ -17,11 +17,11 @@ class HttpManager {
     constructor(router: Router) {
         this._router = router;
         global.router = this._router;
-        this._io = new DiskIO();
+        this._io = new DiscIO();
     }
 
     Dispatch(request: any, response: any): void {
-        this._io = this._io || new DiskIO();
+        this._io = this._io || new DiscIO();
 
         try {
             let url: string = request.url;
@@ -57,8 +57,6 @@ class HttpManager {
             if (url.substr(1, 7) === 'Scripts') {
 
             }
-
-
 
             if (url !== '/favicon.ico' && requestType === undefined) {
 
@@ -111,7 +109,7 @@ class HttpManager {
 
                     // TODO: file is exist on path
                     // TODO: content cache???
-                    let io: IIO = new DiskIO();
+                    let io: IIO = new DiscIO();
 
                     io.Read(customPath, 'utf8', function(text) {
                         result.Content = text;
@@ -119,10 +117,10 @@ class HttpManager {
 
                         renderEngine.RenderResult(result, function(renderedResult: IResult) {
                             response.writeHeader(200, { "Content-Type": "text/html" });
-                            console.log('HTML= ', renderedResult.Content);
                             response.write(renderedResult.Content);
                             response.end();
                         });
+
                     });
 
                     // fileSystem.readFile(customPath, 'utf8', function(err, html) {
@@ -155,6 +153,8 @@ class HttpManager {
                     //     console.log('renderEngine')
                     //
                     // });
+
+
                 }
                 if (result.Name === 'JsonResult') {
 
