@@ -24,6 +24,21 @@ class HttpManager {
             let host: string = request.headers.host;
             let requestContext: RequestContext = new RequestContext(url, methodType);
             // TODO: request validation?? content length, url, headers ...
+
+            /*
+                css ve js workagound
+             */
+            console.log(url.substr(1, 6))
+            if (url.substr(1, 6) === 'Styles') {
+
+            }
+
+            if (url.substr(1, 7) === 'Scripts') {
+
+            }
+
+
+
             if (url !== '/favicon.ico') {
 
                 console.log(url);

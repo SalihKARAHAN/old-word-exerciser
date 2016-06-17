@@ -1,7 +1,7 @@
 import IIO = require('./IIO');
 import FileSystem = require('fs');
 
-class DiskIO implements IIO {
+class DiscIO implements IIO {
 
     public Read(path: string, encoding: string, callback: any): void {
         FileSystem.readFile(path, encoding, function(error, text) {
@@ -15,7 +15,7 @@ class DiskIO implements IIO {
             callback(text);
         });
     }
-    
+
 }
 
-export = DiskIO;
+export = DiscIO;
