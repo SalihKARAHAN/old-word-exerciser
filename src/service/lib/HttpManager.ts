@@ -28,6 +28,7 @@ class HttpManager {
             let methodType: string = request.method;
             let host: string = request.headers.host;
             let requestContext: RequestContext = new RequestContext(url, methodType);
+            console.log('Request to -> ' + url);
             // TODO: request validation?? content length, url, headers ...
 
             /*
