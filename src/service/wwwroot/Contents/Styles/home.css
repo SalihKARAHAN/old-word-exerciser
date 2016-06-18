@@ -1,0 +1,56 @@
+body section {
+    height: auto;
+}
+h1 {
+    text-align: center;
+    width: 100%;
+    /*background-color: brown;*/
+    font-family:
+}
+section.inner {
+    width: 50%;
+    margin-top: 20px;
+    float: left;
+    /*background: gray;*/
+}
+.last .image-group {
+    text-align: center;
+}
+section.inner article {
+    /*background-color: yellow;*/
+    padding: 5px;
+}
+section.inner article p {
+    margin-bottom: 10px;
+    text-indent: 20px;
+}
+section.inner .image-group {
+    text-align: center;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section.inner .image-group .devices {
+    width: 100px;
+    /*background-color: blue;*/
+    /*float: left;*/
+    margin-left: auto;;
+    margin-right: auto;;
+}
+section.inner .image-group .devices .big-image {
+    height: 215px;
+    /*background-color: pink;*/
+}
+section.inner .image-group .devices .big-image img {
+    bottom: 0;
+    /*position: absolute;*/
+}
+section.inner .image-group .devices .download-image {
+    text-align: center;
+    width: 100px;
+    margin-top: 10px;
+    /*background-color: green;*/
+}
+section.inner .image-group .devices .download-image img {
+    /*float: left;*/
+}

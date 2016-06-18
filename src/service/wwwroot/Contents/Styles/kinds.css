@@ -1,0 +1,56 @@
+.body-wrapper {
+    /*background-color: rgb(179, 78, 172);*/
+    width: 100%;
+    height: 450px;
+}
+.body-wrapper .kind-list-area {
+    margin-top: 10px;
+    width: 935px;
+    /*background-color: rgb(136, 209, 16);*/
+    height: auto;
+    max-height: 300px;
+    float: left;
+    overflow-y: scroll;
+    border-bottom: 2px solid black;
+    padding-left: 20px;
+}
+.body-wrapper .kind-list-area .kind {
+    display: block;
+    width: 400px;
+    height: 20px;
+    margin-top: 5px;
+}
+.body-wrapper .kind-list-area .kind:hover {
+    height: 19px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-width: auto;
+}
+.body-wrapper .kind-list-area .kind label {
+    cursor: pointer;
+    font-weight: bold;
+    float: left;
+    display: block;
+    width: 350px;
+}
+
+/*.body-wrapper .kind-list-area .kind label:hover {
+}*/
+
+.body-wrapper .kind-list-area .kind .operations {
+    width: 50px;
+    float: left;
+    /*background-color: rgb(215, 194, 137);*/
+}
+.body-wrapper .kind-list-area .kind .operations i {
+    float: left;
+    cursor: pointer;
+    padding-right: 8px;
+}
+.body-wrapper .kind-management-area {
+    margin-top: 10px;
+    width: 100%;
+    float: left;
+    height: auto;
+    max-height: 80px;
+    /*background-color: rgb(77, 170, 255);*/
+}
