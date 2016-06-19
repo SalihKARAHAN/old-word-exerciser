@@ -21,7 +21,7 @@ class Application {
 
     public RegisterRouter(router: Router): void {
         this._router = router;
-        console.log('Application._router -> ', this._router);
+        // console.log('Application._router -> ', this._router);
     }
 }
 

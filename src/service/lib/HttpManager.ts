@@ -17,7 +17,6 @@ class HttpManager {
     constructor(router: Router) {
         this._router = router;
         global.router = this._router;
-        this._io = new DiscIO();
     }
 
     Dispatch(request: any, response: any): void {
@@ -34,7 +33,7 @@ class HttpManager {
             /*
                 css ve js workagound
              */
-            // console.log(url.substr(1, 6))
+            // // console.log(url.substr(1, 6))
             /*
             bu script style image page vb ayrımları kendi içlerinde yapılabilir
             bağpımsız yapılara dönüştürmem gerekiyor! TODO:  */
@@ -45,31 +44,36 @@ class HttpManager {
                 requestType = 'style';
                 let afterPath = url.substr(7, url.length - 1);
                 let rootPath = '../wwwroot/Contents/Styles' + afterPath;
-                console.log('Target path for styles= ', rootPath); // adreste style yok ise null dönmeli 404 olarak!
+                // console.log('Target path for styles= ', rootPath); // adreste style yok ise null dönmeli 404 olarak!
                 debugger;
                 this._io.Read(rootPath, 'utf8', function(text) {
-                    response.writeHeader(200, { 'Content-Type': 'text/css' });
-                    // console.log('Css= ', text);
-                    response.write(text);
+                    response.writeHeader(200, { 'Content-Type': 'text/css; charset=utf8' });
+                    // // console.log('Css= ', text);
+                    debugger;
+                    response.write(text, 'binary');
+                    console.log(response);
                     response.end;
+                    //console.log('RESPONSE END ON '+rootPath+' STYLE\n');
                 });
+                return;
             }
 
             if (url.substr(1, 7) === 'Scripts') {
 
             }
 
+            console.log('request continueD')
             if (url !== '/favicon.ico' && requestType === undefined) {
 
-                console.log(url);
-                console.log(methodType);
-                console.log(host);
+                // console.log(url);
+                // console.log(methodType);
+                // console.log(host);
                 // find method
                 // how to find?
                 // first looking request url
 
                 let routeData: RouteData = global.router.GetRouteData(requestContext.GetUrl(), requestContext.GetMethodType());
-                // console.log('finded RouteData -> ', routeData);
+                // // console.log('finded RouteData -> ', routeData);
                 if (routeData == null) {
                     throw new RouteCanNotFindException();
                 }
@@ -77,36 +81,36 @@ class HttpManager {
                 //   =====================       TEST AREA       =====================
                 let path: string = '../wwwroot/Controllers/' + routeData.GetControllerName() + 'Controller';
                 let currentController = require(path);
-                // console.log('\nfinded controller -> ', currentController);
-                // console.log('\nfinded new controller -> ', new currentController());
+                // // console.log('\nfinded controller -> ', currentController);
+                // // console.log('\nfinded new controller -> ', new currentController());
                 // let HomeController = require('./HomesController');
-                // console.log('\nfinded new controller.action -> ', new HomeController().Index);
-                // console.log('\nfinded new controller<t>.action -> ', new currentController().Index);
+                // // console.log('\nfinded new controller.action -> ', new HomeController().Index);
+                // // console.log('\nfinded new controller<t>.action -> ', new currentController().Index);
                 let controllerInstance = new currentController();
-                // console.log('\ncontrollerInstance -> ', controllerInstance);
+                // // console.log('\ncontrollerInstance -> ', controllerInstance);
                 let actionName = routeData.GetActionName();
-                // console.log('\nactionName -> ', actionName);
-                // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
+                // // console.log('\nactionName -> ', actionName);
+                // // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
                 let action = controllerInstance[actionName];
 
                 // TODO: how to access and get action arguments
                 // TODO: how to access and get return type
 
                 let result: IResult = action();
-                console.log('result of executed action -> ', result);
+                // console.log('result of executed action -> ', result);
                 // TODO: buranın daha iyileştirilmesi gerekiyor.
 
-                //console.log(__dirname);
-                //console.log(__filename);
+                //// console.log(__dirname);
+                //// console.log(__filename);
 
                 if (result.Name === Constants.Results.HTML) { // buradaki if yapısı için strategy pattern implementasyonu yapılabilir! Her resultun nasıl değerlendireleceği result'u değerlendiren yapının kendisinde olmalı!
-                    console.log('Result = HTML!!')
+                    // console.log('Result = HTML!!')
 
                     // find view path;
                     let pathManager = require('path');
 
                     let customPath = '../wwwroot/Contents/Views/' + routeData.GetControllerName() + '/' + routeData.GetActionName() + '.html';
-                    console.log(customPath);
+                    // console.log(customPath);
 
                     // TODO: file is exist on path
                     // TODO: content cache???
@@ -117,7 +121,7 @@ class HttpManager {
                         let renderEngine: RenderEngine = new RenderEngine();
 
                         renderEngine.RenderResult(result, function(renderedResult: IResult) {
-                            response.writeHeader(200, { "Content-Type": "text/html" });
+                            response.writeHeader(200, { "Content-Type": "text/html; charset=utf8" });
                             response.write(renderedResult.Content);
                             response.end();
                         });
@@ -144,14 +148,14 @@ class HttpManager {
                     //      *
                     //     */
                     //
-                    //     console.log(html);
+                    //     // console.log(html);
                     //     result.Content = html;
-                    //     console.log('Result.Content=', result.Content);
+                    //     // console.log('Result.Content=', result.Content);
                     //
                     //
                     //     var renderEngine: RenderEngine = new RenderEngine();
                     //     renderEngine.RenderResult(result);
-                    //     console.log('renderEngine')
+                    //     // console.log('renderEngine')
                     //
                     // });
 

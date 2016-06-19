@@ -18,7 +18,7 @@ class RenderEngine {
         let htmlOutput: string = null;
         let hasDefination: boolean = this.HasLayoutDefination(result);
 
-        console.log('Clean HTML out of methot= ', result.Content);
+        // console.log('Clean HTML out of methot= ', result.Content);
         if (hasDefination) {
             let io: IIO = new DiscIO();
             let layoutPath: string = '../wwwroot/Contents/Views/Templates/Page.Layout.html';
@@ -27,7 +27,7 @@ class RenderEngine {
             io.Read(layoutPath, 'utf8', function(text) {
                 let layout: string = text;
                 layout = layout.replace(/<{[a-zA-Z.:'~\/()\s]+}>/g, result.Content);
-                console.log('Merged Page= ', layout);
+                // // console.log('Merged Page= ', layout);
                 // result.Content = layout;
                 result.Content = layout;
 
@@ -38,7 +38,7 @@ class RenderEngine {
         } else {
 
         }
-        console.log('hasDefination', hasDefination);
+        // console.log('hasDefination', hasDefination);
         /**
          * look this content, layout decleration is exist?
          * 		yes:   run layout is exist on defined path or default
@@ -79,11 +79,11 @@ class RenderEngine {
         if (layoutDefination.indexOf('Page.Layout:')) {
             hasDefination = true;
         }
-        console.log('Layout definition= ', layoutDefination);
+        // console.log('Layout definition= ', layoutDefination);
 
         // TODO: şimdilik buradan siliyorum normalde bunu Getayout(...) metodunun yapıyor olması lazım!
         result.Content = result.Content.replace(layoutDefination, '');
-        console.log('Clean HTML first removed= ', result.Content)
+        // console.log('Clean HTML first removed= ', result.Content)
 
         return hasDefination;
     }
