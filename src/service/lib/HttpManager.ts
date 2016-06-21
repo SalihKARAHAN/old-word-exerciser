@@ -20,6 +20,8 @@ class HttpManager {
     }
 
     Dispatch(request: any, response: any): void {
+
+        // request.on('end', function() {
         this._io = this._io || new DiscIO();
 
         try {
@@ -47,22 +49,28 @@ class HttpManager {
                 // console.log('Target path for styles= ', rootPath); // adreste style yok ise null dönmeli 404 olarak!
                 debugger;
                 this._io.Read(rootPath, 'utf8', function(text) {
-                    response.writeHeader(200, { 'Content-Type': 'text/css; charset=utf8' });
+                    response.writeHeader(200, { 'Content-Type': 'text/css; charset=utf8', 'transfer-encoding': 'gzip' });
                     // // console.log('Css= ', text);
                     debugger;
-                    response.write(text, 'binary');
-                    console.log(response);
-                    response.end;
+                    response.end(text, 'utf8');
                     //console.log('RESPONSE END ON '+rootPath+' STYLE\n');
+                }, function() {
+                    response.end();
+                    console.log('Request complated in css');
+                    return;
                 });
-                return;
             }
 
             if (url.substr(1, 7) === 'Scripts') {
 
             }
 
-            console.log('request continueD')
+            if (url === '/favicon.ico') {
+                response.end();
+                return;
+            }
+
+            // console.log('request continueD')
             if (url !== '/favicon.ico' && requestType === undefined) {
 
                 // console.log(url);
@@ -123,9 +131,11 @@ class HttpManager {
                         renderEngine.RenderResult(result, function(renderedResult: IResult) {
                             response.writeHeader(200, { "Content-Type": "text/html; charset=utf8" });
                             response.write(renderedResult.Content);
-                            response.end();
                         });
 
+                    }, function() {
+                        response.end();
+                        console.log('Request complated in html');
                     });
 
                     // fileSystem.readFile(customPath, 'utf8', function(err, html) {
@@ -179,7 +189,6 @@ class HttpManager {
                 // before decorators
                 // invoke action
                 // after decorators
-                //
 
             }
         } catch (error) {
@@ -187,6 +196,9 @@ class HttpManager {
             response.write(error);
             response.end();
         }
+
+        // }); // request end
+        // request.end();
     }
 }
 

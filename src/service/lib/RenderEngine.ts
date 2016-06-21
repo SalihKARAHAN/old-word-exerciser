@@ -34,7 +34,9 @@ class RenderEngine {
                 if (processEndCallback) {
                     processEndCallback(result);
                 }
-            })
+            },function () {
+
+            });
         } else {
 
         }
