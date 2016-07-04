@@ -1,19 +1,27 @@
 module.exports = function(grunt) {
+
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        uglify: {
-            options: {
-                banner: '<% pkg.name %> - <% pkg.version %> \n'
-                      + '<% pkg.author %> '
-                      + '<% grunt.template.today("dd-mm-yyyy") %>'
+        shell: {
+            compile_ts: {
+                command: 'tsc'
             }
         },
-        build: {
-
-        }
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    src: ['wwwroot/Contents/**'],
+                    dest: 'build/'
+                }]
+            }
+        },
+        clean: ['build/']
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    grunt.registerTask('build',['uglify'])
+    grunt.registerTask('build', ['clean', 'shell:compile_ts', 'copy']);
 };
