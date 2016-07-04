@@ -20,8 +20,6 @@ class HttpManager {
     }
 
     Dispatch(request: any, response: any): void {
-
-        // request.on('end', function() {
         this._io = this._io || new DiscIO();
 
         try {
@@ -39,10 +37,10 @@ class HttpManager {
             /*
             bu script style image page vb ayrımları kendi içlerinde yapılabilir
             bağpımsız yapılara dönüştürmem gerekiyor! TODO:  */
-
             let requestType: string = undefined;
 
             if (url.substr(1, 6) === 'Styles') {
+                console.log(__dirname);
                 requestType = 'style';
                 let afterPath = url.substr(7, url.length - 1);
                 let rootPath = '../wwwroot/Contents/Styles' + afterPath;
@@ -53,73 +51,41 @@ class HttpManager {
                     // // console.log('Css= ', text);
                     debugger;
                     response.end(text, 'utf8');
-                    //console.log('RESPONSE END ON '+rootPath+' STYLE\n');
                 }, function() {
                     response.end();
                     console.log('Request complated in css');
                     return;
                 });
             }
-
             if (url.substr(1, 7) === 'Scripts') {
 
             }
-
             if (url === '/favicon.ico') {
                 response.end();
                 return;
             }
-
-            // console.log('request continueD')
             if (url !== '/favicon.ico' && requestType === undefined) {
-
-                // console.log(url);
-                // console.log(methodType);
-                // console.log(host);
                 // find method
                 // how to find?
                 // first looking request url
-
                 let routeData: RouteData = global.router.GetRouteData(requestContext.GetUrl(), requestContext.GetMethodType());
-                // // console.log('finded RouteData -> ', routeData);
                 if (routeData == null) {
                     throw new RouteCanNotFindException();
                 }
-                debugger;
-                //   =====================       TEST AREA       =====================
                 let path: string = '../wwwroot/Controllers/' + routeData.GetControllerName() + 'Controller';
                 let currentController = require(path);
-                // // console.log('\nfinded controller -> ', currentController);
-                // // console.log('\nfinded new controller -> ', new currentController());
-                // let HomeController = require('./HomesController');
-                // // console.log('\nfinded new controller.action -> ', new HomeController().Index);
-                // // console.log('\nfinded new controller<t>.action -> ', new currentController().Index);
                 let controllerInstance = new currentController();
-                // // console.log('\ncontrollerInstance -> ', controllerInstance);
                 let actionName = routeData.GetActionName();
-                // // console.log('\nactionName -> ', actionName);
-                // // console.log('\ncontrollerInstance -> ', controllerInstance[actionName]);
                 let action = controllerInstance[actionName];
-
                 // TODO: how to access and get action arguments
                 // TODO: how to access and get return type
-
                 let result: IResult = action();
-                // console.log('result of executed action -> ', result);
                 // TODO: buranın daha iyileştirilmesi gerekiyor.
-
-                //// console.log(__dirname);
-                //// console.log(__filename);
-
                 if (result.Name === Constants.Results.HTML) { // buradaki if yapısı için strategy pattern implementasyonu yapılabilir! Her resultun nasıl değerlendireleceği result'u değerlendiren yapının kendisinde olmalı!
-                    // console.log('Result = HTML!!')
-
                     // find view path;
                     let pathManager = require('path');
 
                     let customPath = '../wwwroot/Contents/Views/' + routeData.GetControllerName() + '/' + routeData.GetActionName() + '.html';
-                    // console.log(customPath);
-
                     // TODO: file is exist on path
                     // TODO: content cache???
                     let io: IIO = new DiscIO();
@@ -137,68 +103,16 @@ class HttpManager {
                         response.end();
                         console.log('Request complated in html');
                     });
-
-                    // fileSystem.readFile(customPath, 'utf8', function(err, html) {
-                    //     if (err) {
-                    //         // TODO: require const declaration file for const values!!!
-                    //         response.writeHeader(200, { "Content-Type": "text/html" });
-                    //         response.write(err);
-                    //         response.end();
-                    //     }
-                    //     response.writeHeader(200, { "Content-Type": "text/html" });
-                    //     // burada okunan html dosyası içerisinde <{}> deklerasyonu var mı diye bakılmalı.
-                    //     /* page obj deklerasyonu var ise bu deklerasyon parse edilmeli
-                    //      *      1- bu deklerasyon için bir adet şemaya ihtiyaç var.
-                    //      *      2- ilgili html dosyası içerisindeki deklerasyonları bulup şema nesnesine
-                    //      *         aktaracak ve daha sonra gerekli komutları yerine getirecek bir iş sınıfına da ihtiyaç var
-                    //      *      Örn:  Page.Layout deklerasyonuna rastlanıldığında ilgili sayfanın bir layout'a ait olduğ anlaşılmalı.
-                    //      *            Her deklerasyon için bir komut bulunmalı ve deklerasyonları kullanmak için bu komutlar kullanılmalı.
-                    //      *            Örneğin Layout komutu deklare edilen dizindeki html sayfasını okumalı ve bu sayfa içerisindeki body yazan
-                    //      *            kısma bir önceki html dsyasındaki html değerleri eklenilmeli. Böyece template belirtebilme mümkün olmakta.
-                    //      *
-                    //     */
-                    //
-                    //     // console.log(html);
-                    //     result.Content = html;
-                    //     // console.log('Result.Content=', result.Content);
-                    //
-                    //
-                    //     var renderEngine: RenderEngine = new RenderEngine();
-                    //     renderEngine.RenderResult(result);
-                    //     // console.log('renderEngine')
-                    //
-                    // });
-
-
                 }
                 if (result.Name === 'JsonResult') {
 
                 }
-
-                // response.write(result.Name);
-                // response.statusCode = 200;
-                // response.end();
-                // let action = currentController[routeData.GetActionName()];
-                // route table has include request url
-                // is exist?
-                //      if has exist execute defined action of controller
-                //      else look to url and try to parse.
-                //      else exception
-
-                // authentication & authorization
-                // before decorators
-                // invoke action
-                // after decorators
-
             }
         } catch (error) {
             response.writeHeader(200, { "Content-Type": "text/html" });
             response.write(error);
             response.end();
         }
-
-        // }); // request end
-        // request.end();
     }
 }
 

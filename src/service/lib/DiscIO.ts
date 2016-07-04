@@ -5,6 +5,7 @@ class DiscIO implements IIO {
 
     public Read(path: string, encoding: string, successCallback: any, closeCallback): void {
         debugger;
+        console.log(path + '-> ' + encoding);
         let stream = FileSystem.createReadStream(path, encoding);
 
         // FileSystem.readFile(path, encoding, function(error, text) {
@@ -19,6 +20,8 @@ class DiscIO implements IIO {
         // });
 
         stream.on('error', function(exception) {
+            console.log(__dirname);
+            console.log(exception);
             console.log('\t\t\t ************** ERROR **************\n for ' + path);
         });
 
