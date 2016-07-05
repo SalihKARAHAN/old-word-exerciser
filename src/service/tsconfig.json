@@ -25,8 +25,8 @@
         "main": "typings/main",
         "browser": "typings/browser"
     },
-    "compileOnSave": true,
-    "buildOnSave": true,
+    "compileOnSave": false,
+    "buildOnSave": false,
     "atom": {
         "rewriteTsconfig": false
     }
