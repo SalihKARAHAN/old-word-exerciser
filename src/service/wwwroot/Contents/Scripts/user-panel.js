@@ -1,6 +1,7 @@
 (function() {
 
     var usernameLabel = document.getElementById('userpanel');
+    
     usernameLabel.onclick = function() {
         console.log(arguments);
         var usermenu = document.getElementById('usermenu');

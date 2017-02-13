@@ -1,1 +1,1 @@
-node /Volumes/REPOSITORY/word-exerciser/src/service/build/wwwroot/app.js
+node ./build/wwwroot/app.js
