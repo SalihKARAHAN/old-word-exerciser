@@ -1,5 +1,5 @@
 declare namespace NodeJS {
     export interface Global {
-        router: any;
+        router: any; // neden buna ihtiyacım olduğunu şuan hatırlamıyorum!
     }
 }

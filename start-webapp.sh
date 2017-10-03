@@ -1,0 +1,1 @@
+node ./src/service/build/wwwroot/app.js

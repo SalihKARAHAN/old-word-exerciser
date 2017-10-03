@@ -13,10 +13,10 @@ class Application {
 
     }
 
-    public Start(port: number, callback: any): void {
+    public Start(ip:string, port: number, callback: any): void {
         let manager = new httpManager(this._router);
         let server = http.createServer(manager.Dispatch);
-        server.listen(port, 'localhost', callback);
+        server.listen(port, ip, callback);
     }
 
     public RegisterRouter(router: Router): void {

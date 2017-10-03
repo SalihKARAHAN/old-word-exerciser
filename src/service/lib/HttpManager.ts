@@ -6,6 +6,7 @@ import {RouteCanNotFindException} from './Exception/RouteCanNotFindException';
 import IResult = require('./Result/IResult');
 import Constants = require('./Constants');
 import RenderEngine = require('./RenderEngine');
+import RequestManager = require('./Request/RequestManager');
 
 import IIO = require('./IIO');
 import DiscIO = require('./DiscIO');
@@ -21,6 +22,10 @@ class HttpManager {
 
     Dispatch(request: any, response: any): void {
         this._io = this._io || new DiscIO();
+        
+        RequestManager requestManager = new RequestManager();
+        requestManager.CreateResponseForRequest(request)
+        
 
         try {
             let url: string = request.url;
